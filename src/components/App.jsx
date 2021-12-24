@@ -18,15 +18,16 @@ export default class App extends Component {
 
   render() {
     return (
-      <button
-        type="button"
-        className="btn"
-        disabled={this.state.disabled}
-        onClick={this.toggleDisabled}
-        onKeyDown={this.toggleDisabled}
-      >
-        Нажми на меня
-      </button>
+      <>
+        <button
+          type="button"
+          className="btn"
+          disabled={this.state.disabled}
+          onClick={this.toggleDisabled}
+        >
+          Нажми на меня
+        </button>
+      </>
     );
   }
 }
