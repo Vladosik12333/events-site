@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Template from './Template';
 
 export default class App extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <>
+      <Template>
         <button
           type="button"
           className="btn"
@@ -27,7 +28,7 @@ export default class App extends Component {
         >
           Нажми на меня
         </button>
-      </>
+      </Template>
     );
   }
 }
