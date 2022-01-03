@@ -1,0 +1,55 @@
+@import '../../../../styles/vars';
+
+.containerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 280px;
+  padding-top: 14px;
+
+  @media screen and (min-width: 1024px) {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  & h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: white;
+    line-height: 26px;
+    display: inline-block;
+    cursor: pointer;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 30px;
+    }
+  }
+}
+
+.navigation {
+  & ul {
+    display: flex;
+    margin-left: -10px;
+
+    @media screen and (min-width: 1024px) {
+      margin-left: -14px;
+    }
+
+    & li {
+      font-size: 14px;
+      color: white;
+      text-transform: uppercase;
+      margin-left: 10px;
+      cursor: pointer;
+
+      @media screen and (min-width: 1024px) {
+        font-size: 18px;
+        margin-left: 14px;
+      }
+    }
+
+    & .currentHeader {
+      border-bottom: 2px solid white;
+    }
+  }
+}

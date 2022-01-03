@@ -1,0 +1,14 @@
+@import '../../../styles/vars';
+
+.header {
+  background-color: $accentColor;
+  height: 140px;
+
+  @media screen and (min-width: 1024px) {
+    height: 100px;
+  }
+}
+
+.headerCabinet {
+  height: 100px;
+}
