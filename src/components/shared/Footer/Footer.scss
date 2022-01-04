@@ -1,0 +1,50 @@
+@import '../../../styles/vars';
+
+.footer {
+  padding: 27px 0;
+  background-color: #f7f7f7;
+  margin-top: 30px;
+
+  @media screen and (min-width: 1024px) {
+    padding: 40px 0;
+  }
+
+  & .containerFooter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: 6px;
+    color: $mainColorDark;
+    font-size: 14px;
+    font-weight: 400;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 16px;
+    }
+
+    & .firstInfo {
+      margin-right: 4px;
+    }
+
+    & div {
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin: 0 10px;
+        fill: $accentColorDark;
+        animation: heart-icon-anime 1000ms infinite;
+      }
+    }
+  }
+}
+
+@keyframes heart-icon-anime {
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

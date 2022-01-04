@@ -5,9 +5,9 @@ import FormHeader from './FormHeader';
 import ContainerHeader from './ContainerHeader';
 import './Header.scss';
 
-export default function Header({ form, home }) {
+export default function Header({ form }) {
   return (
-    <header className={home ? 'header' : 'header headerCabinet'}>
+    <header className={form ? 'header' : 'header headerCabinet'}>
       <Template>
         <ContainerHeader />
         {form && <FormHeader />}
@@ -18,5 +18,4 @@ export default function Header({ form, home }) {
 
 Header.propTypes = {
   form: propTypes.bool.isRequired,
-  home: propTypes.bool.isRequired,
 };

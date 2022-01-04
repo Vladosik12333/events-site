@@ -1,0 +1,58 @@
+@import '../../../styles/vars';
+
+.itemEvent {
+  width: 280px;
+  height: 456px;
+  position: relative;
+  cursor: pointer;
+
+  & ul {
+    & .containerPhoto {
+      height: 400px;
+      background-color: $mainColor;
+
+      & img {
+        object-fit: cover;
+      }
+    }
+
+    & .containerInfo {
+      max-width: 280px;
+      font-size: 14px;
+
+      & h3 {
+        margin-top: 10px;
+        text-transform: uppercase;
+        font-size: 700;
+      }
+
+      & p {
+        margin-top: 4px;
+        color: $accentColor;
+      }
+    }
+  }
+}
+
+.itemIconsEvent {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-top: -5px;
+
+  & button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid $accentColor;
+    margin-top: 5px;
+    cursor: inherit;
+
+    & svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

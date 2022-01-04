@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import propTypes, { array, object } from 'prop-types';
 import './Template.scss';
 
 export default function Template({ children }) {
@@ -7,5 +7,5 @@ export default function Template({ children }) {
 }
 
 Template.propTypes = {
-  children: propTypes.array.isRequired,
+  children: propTypes.oneOfType([array, object]).isRequired,
 };

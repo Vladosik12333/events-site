@@ -1,0 +1,9 @@
+@import '../../../styles/vars';
+
+.eventsHome {
+  margin: 50px 0 0 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
