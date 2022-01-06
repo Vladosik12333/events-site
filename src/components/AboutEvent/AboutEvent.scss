@@ -1,0 +1,171 @@
+@import '../../styles/vars';
+
+.aboutEvent {
+  overflow-y: scroll;
+  z-index: 5;
+
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 500px;
+  }
+}
+
+.aboutEventImage {
+  margin-top: 50px;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 1024px) {
+    margin: 0 40px 0 0;
+  }
+
+  & img {
+    object-fit: cover;
+  }
+}
+
+.aboutEventContent {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+
+  @media screen and (min-width: 1024px) {
+    padding: 0;
+    width: 350px;
+    height: 400px;
+  }
+
+  & h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 500;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 30px;
+    }
+  }
+}
+
+.aboutEventInfoList {
+  & li {
+    font-size: 10px;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 12px;
+    }
+
+    & span {
+      color: #8c8c8c;
+
+      &::after {
+        content: '/';
+        margin: 0 10px;
+      }
+    }
+
+    & p {
+      text-transform: uppercase;
+      display: inline-block;
+    }
+  }
+}
+
+.aboutEventDetails {
+  & h3 {
+    text-transform: uppercase;
+    text-align: center;
+    color: $mainColorDark;
+    font-size: 16px;
+    margin: 10px 0;
+    font-weight: 500;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 24px;
+    }
+  }
+
+  & p {
+    font-size: 10px;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 12px;
+    }
+  }
+}
+
+.aboutEventButtons {
+  padding-top: 25px;
+  padding-bottom: 20px;
+  font-size: 12px;
+
+  & form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: 1024px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    & input {
+      border: 1px solid black;
+      border-radius: 5px;
+      width: 170px;
+      height: 36px;
+      margin-bottom: 20px;
+      background-color: #f4f4f4;
+      font-size: inherit;
+      font-family: inherit;
+      padding-left: 7px;
+
+      @media screen and (min-width: 1024px) {
+        width: 210px;
+        margin: 0;
+      }
+
+      &::placeholder {
+        color: black;
+      }
+    }
+
+    & button {
+      color: white;
+      text-transform: uppercase;
+      background-color: $accentColorDark;
+      border-radius: 5px;
+      width: 120px;
+      height: 36px;
+      font-size: inherit;
+      font-family: inherit;
+
+      @media screen and (min-width: 1024px) {
+        width: 105px;
+      }
+    }
+  }
+
+  & div {
+    color: white;
+    text-transform: uppercase;
+    background-color: $accentColor;
+    border-radius: 5px;
+    font-size: 12px;
+    height: 36px;
+    width: 210px;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 20px;
+
+    & p {
+      font-size: inherit;
+    }
+  }
+}

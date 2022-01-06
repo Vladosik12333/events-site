@@ -7,14 +7,13 @@ export default function App() {
   return (
     <>
       <Switch>
-        <Route exact path="/">
+        <Route path="/events">
           <HomeView />
         </Route>
         <Route path="/cabinet">
           <CabinetView />
         </Route>
-        <Route path="modal/:id"></Route>
-        <Redirect to="/" />
+        <Redirect to="/events" />
       </Switch>
     </>
   );

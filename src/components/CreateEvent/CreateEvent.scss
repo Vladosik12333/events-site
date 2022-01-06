@@ -1,0 +1,88 @@
+@import '../../styles/vars';
+
+.createEvent {
+  width: 240px;
+  margin: 40px 20px;
+
+  @media screen and (min-width: 1024px) {
+    width: 100%;
+    height: 100%;
+    margin: 20px 0;
+  }
+
+  & h2 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 30px;
+    }
+  }
+}
+
+.createEventForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  & label {
+    font-size: 12px;
+    color: $mainColorDark;
+    margin-top: 15px;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 16px;
+      flex-basis: 270px;
+    }
+
+    & input {
+      width: 250px;
+      height: 30px;
+      border: 1px solid rgba(33, 33, 33, 0.2);
+      border-radius: 4px;
+      font-family: inherit;
+      padding-left: 7px;
+
+      &::placeholder {
+        font-size: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+      }
+    }
+
+    & textarea {
+      width: 250px;
+      height: 170px;
+      border: 1px solid rgba(33, 33, 33, 0.2);
+      border-radius: 4px;
+      resize: none;
+      padding-left: 7px;
+    }
+  }
+
+  & button {
+    margin-top: 20px;
+    height: 36px;
+    background-color: $accentColorDark;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border-radius: 4px;
+    color: #fff;
+    font-family: inherit;
+    width: 120px;
+
+    @media screen and (min-width: 1024px) {
+      margin: 35px 30px;
+    }
+  }
+}
