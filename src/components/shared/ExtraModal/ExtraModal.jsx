@@ -1,35 +1,39 @@
-import React, { useState } from 'react';
-import Modal from '../shared/Modal';
-import './CreateEvent.scss';
+import React, { useState } from "react";
+import propTypes from "prop-types";
+import { useHistory } from "react-router-dom";
+import Modal from "../Modal";
+import "./ExtraModal.scss";
 
-export default function CreateEvent() {
-  const [title, setTitle] = useState('');
-  const [place, setPlace] = useState('');
-  const [author, setAuthor] = useState('');
-  const [about, setAbout] = useState('');
-  const [photo, setPhoto] = useState('');
-  const [date, setDate] = useState('');
+export default function ExtraModal({ actionEvent, infoForEvent, onSubmit }) {
+  const history = useHistory();
+
+  const [title, setTitle] = useState(infoForEvent?.title ?? "");
+  const [place, setPlace] = useState(infoForEvent?.place ?? "");
+  const [author, setAuthor] = useState(infoForEvent?.author ?? "");
+  const [about, setAbout] = useState(infoForEvent?.about ?? "");
+  const [photo, setPhoto] = useState(infoForEvent?.photo ?? "");
+  const [date, setDate] = useState(infoForEvent?.date ?? "");
 
   const onChangeInput = ({ target }) => {
     const { value, name } = target;
 
     switch (name) {
-      case 'title':
+      case "title":
         setTitle(value);
         break;
-      case 'place':
+      case "place":
         setPlace(value);
         break;
-      case 'author':
+      case "author":
         setAuthor(value);
         break;
-      case 'about':
+      case "about":
         setAbout(value);
         break;
-      case 'photo':
+      case "photo":
         setPhoto(value);
         break;
-      case 'date':
+      case "date":
         setDate(value);
         break;
       default:
@@ -43,31 +47,32 @@ export default function CreateEvent() {
     evt.preventDefault();
 
     if (
-      title.trim() === '' ||
-      place.trim() === '' ||
-      author.trim() === '' ||
-      about.trim() === '' ||
-      photo.trim() === '' ||
-      date.trim() === ''
+      title.trim() === "" ||
+      place.trim() === "" ||
+      author.trim() === "" ||
+      about.trim() === "" ||
+      photo.trim() === "" ||
+      date.trim() === ""
     )
-      return alert('Ohhh... You have some empty label.');
+      return alert("Ohhh... You have some empty label.");
 
-    console.log({ title, place, author, about, photo, date });
+    onSubmit({ title, place, author, about, photo, date });
 
-    setTitle('');
-    setPlace('');
-    setAuthor('');
-    setAbout('');
-    setPhoto('');
-    setDate('');
+    setTitle("");
+    setPlace("");
+    setAuthor("");
+    setAbout("");
+    setPhoto("");
+    setDate("");
 
+    history.push("/cabinet");
     return null;
   };
 
   return (
-    <Modal urlHandleClose="/cabinet" stylesAbsoluteModal>
+    <Modal urlHandleClose="/cabinet">
       <div className="createEvent">
-        <h2>Create event</h2>
+        <h2>{actionEvent ? "Create" : "Edit"} event</h2>
         <form onSubmit={preSubmit} className="createEventForm">
           <label htmlFor="title">
             Title of event
@@ -129,9 +134,16 @@ export default function CreateEvent() {
               onChange={onChangeInput}
             />
           </label>
-          <button type="submit">create event</button>
+          <button type="submit">{actionEvent ? "create" : "edit"} event</button>
         </form>
       </div>
     </Modal>
   );
 }
+
+ExtraModal.propTypes = {
+  actionEvent: propTypes.bool.isRequired,
+  onSubmit: propTypes.func.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  infoForEvent: propTypes.object,
+};

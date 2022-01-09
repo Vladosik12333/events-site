@@ -1,0 +1,72 @@
+@import "../../../styles/vars";
+
+.authorizationForm {
+  height: 300px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    width: 500px;
+    height: 150px;
+    padding: 100px 0;
+    font-size: 16px;
+    flex-wrap: wrap;
+  }
+
+  & input {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 170px;
+    height: 36px;
+    margin-bottom: 20px;
+    background-color: #f4f4f4;
+    font-size: inherit;
+    font-family: inherit;
+    padding-left: 7px;
+
+    @media screen and (min-width: 1024px) {
+      width: 210px;
+      margin: 0 10px;
+    }
+
+    &::placeholder {
+      color: black;
+    }
+  }
+
+  & .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width: 1024px) {
+      flex-direction: row;
+      flex-basis: 100%;
+      justify-content: space-around;
+    }
+
+    button {
+      color: white;
+      text-transform: uppercase;
+      background-color: $accentColorDark;
+      border-radius: 5px;
+      width: 120px;
+      height: 36px;
+      font-size: inherit;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 10px;
+
+      @media screen and (min-width: 1024px) {
+        width: 105px;
+        margin: 0 20px;
+      }
+    }
+  }
+}

@@ -1,1 +1,0 @@
-import './YourEvents.scss';

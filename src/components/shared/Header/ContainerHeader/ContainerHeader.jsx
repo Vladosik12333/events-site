@@ -11,7 +11,7 @@ export default function ContainerHeader() {
       <nav className="navigation">
         <ul>
           <li>
-            <NavLink exact to="/" activeClassName="currentHeader">
+            <NavLink to="/events" activeClassName="currentHeader">
               Events
             </NavLink>
           </li>

@@ -1,4 +1,4 @@
-@import '../../styles/vars';
+@import '../../../styles/vars';
 
 .aboutEvent {
   overflow-y: scroll;
@@ -143,6 +143,7 @@
       height: 36px;
       font-size: inherit;
       font-family: inherit;
+      cursor: pointer;
 
       @media screen and (min-width: 1024px) {
         width: 105px;

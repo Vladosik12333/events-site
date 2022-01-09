@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import './AboutEvent.scss';
-import Modal from '../shared/Modal';
-import mockup from '../../mockup-photo.jpg';
+import React, { useState } from "react";
+import "./AboutEvent.scss";
+import Modal from "../../shared/Modal";
+import mockup from "../../../mockup-photo.jpg";
 
 export default function AboutEvent() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const changeInput = ({ target }) => {
     setEmail(target.value);
@@ -13,17 +13,17 @@ export default function AboutEvent() {
   const preSubmit = evt => {
     evt.preventDefault();
 
-    if (email.trim() === '') return alert('Ohhh... You have some empty label.');
+    if (email.trim() === "") return alert("Ohhh... You have some empty label.");
 
     console.log(email);
 
-    setEmail('');
+    setEmail("");
 
     return null;
   };
 
   return (
-    <Modal urlHandleClose="/events" stylesAbsoluteModal={false}>
+    <Modal urlHandleClose="/events">
       <div className="aboutEvent">
         <div className="aboutEventImage">
           <img src={mockup} alt="" />

@@ -1,4 +1,4 @@
-@import '../../styles/vars';
+@import "../../../styles/vars";
 
 .createEvent {
   width: 240px;
@@ -29,7 +29,7 @@
   @media screen and (min-width: 1024px) {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
   }
 
   & label {
@@ -64,6 +64,9 @@
       border-radius: 4px;
       resize: none;
       padding-left: 7px;
+      font-family: inherit;
+      font-size: 12px;
+      font-style: inherit;
     }
   }
 
@@ -80,9 +83,11 @@
     color: #fff;
     font-family: inherit;
     width: 120px;
+    cursor: pointer;
 
     @media screen and (min-width: 1024px) {
       margin: 35px 30px;
+      font-size: 14px;
     }
   }
 }

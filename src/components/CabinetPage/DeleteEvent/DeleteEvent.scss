@@ -1,0 +1,66 @@
+.deleteEvent {
+  font-size: 12px;
+  height: 250px;
+
+  @media screen and (min-width: 1024px) {
+    width: 500px;
+    height: 150px;
+    font-size: 18px;
+  }
+
+  & p {
+    text-align: center;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    padding-top: 50px;
+    margin: 0 20px 30px 20px;
+
+    @media screen and (min-width: 1024px) {
+      padding-top: 30px;
+      margin: 0;
+      font-size: inherit;
+    }
+  }
+
+  & .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media screen and (min-width: 1024px) {
+      justify-content: space-evenly;
+      align-items: flex-end;
+      flex-direction: row;
+      margin-top: 30px;
+    }
+
+    & button {
+      color: white;
+      text-transform: uppercase;
+      border-radius: 5px;
+      width: 120px;
+      height: 36px;
+      font-size: inherit;
+      font-family: inherit;
+      cursor: pointer;
+
+      @media screen and (min-width: 1024px) {
+        width: 105px;
+      }
+    }
+
+    & .buttonAccept {
+      background-color: green;
+    }
+
+    & .buttonCancel {
+      background-color: red;
+      margin: 30px 0;
+
+      @media screen and (min-width: 1024px) {
+        margin: 0;
+      }
+    }
+  }
+}

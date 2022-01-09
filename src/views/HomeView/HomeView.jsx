@@ -1,9 +1,10 @@
-import React from 'react';
-import { Route, useRouteMatch } from 'react-router-dom';
-import MainSection from '../../components/mainPage/MainSection';
-import Header from '../../components/shared/Header';
-import Footer from '../../components/shared/Footer';
-import AboutEvent from '../../components/AboutEvent';
+import React from "react";
+import { Switch, Route, useRouteMatch, Redirect } from "react-router-dom";
+import MainSection from "../../components/mainPage/MainSection";
+import Header from "../../components/shared/Header";
+import Footer from "../../components/shared/Footer";
+import AboutEvent from "../../components/mainPage/AboutEvent";
+import Authorization from "../../components/mainPage/Authorization/Authorization";
 
 export default function HomeView() {
   const { url } = useRouteMatch();
@@ -14,9 +15,15 @@ export default function HomeView() {
       <MainSection />
       <Footer />
 
-      <Route path={`${url}/:id`}>
-        <AboutEvent />
-      </Route>
+      <Switch>
+        <Route path={`${url}/aboutEvent/:id`}>
+          <AboutEvent />
+        </Route>
+        <Route path={`${url}/authorization`}>
+          <Authorization />
+        </Route>
+        <Redirect to="/events" />
+      </Switch>
     </>
   );
 }
