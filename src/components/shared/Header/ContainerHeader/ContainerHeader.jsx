@@ -1,8 +1,12 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import './ContainerHeader.scss';
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import "./ContainerHeader.scss";
+import { useSelector } from "react-redux";
+import { selectors } from "../../../../redux/users";
 
 export default function ContainerHeader() {
+  const status = useSelector(state => selectors.getCurrentUserId(state));
+
   return (
     <div className="containerHeader">
       <h1>
@@ -16,7 +20,10 @@ export default function ContainerHeader() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/cabinet" activeClassName="currentHeader">
+            <NavLink
+              to={status ? "/cabinet" : "/events/authorization"}
+              activeClassName="currentHeader"
+            >
               My cabinet
             </NavLink>
           </li>

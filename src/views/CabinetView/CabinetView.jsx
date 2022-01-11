@@ -1,14 +1,29 @@
-import React from "react";
-import { Switch, Route, useRouteMatch, Redirect } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import {
+  Switch,
+  Route,
+  useRouteMatch,
+  Redirect,
+  useHistory,
+} from "react-router-dom";
 import CreateEvent from "../../components/cabinetPage/CreateEvent";
 import DeleteEvent from "../../components/cabinetPage/DeleteEvent";
 import EditEvent from "../../components/cabinetPage/EditEvent";
 import MainSection from "../../components/cabinetPage/MainSection";
 import Footer from "../../components/shared/Footer";
 import Header from "../../components/shared/Header";
+import { selectors } from "../../redux/users";
 
 export default function HomeView() {
   const { url } = useRouteMatch();
+  const statusAuth = useSelector(state => selectors.getCurrentUserId(state));
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!statusAuth ?? false) return history.push("/events");
+    return null;
+  }, []);
 
   return (
     <>
