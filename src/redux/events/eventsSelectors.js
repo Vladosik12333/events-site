@@ -1,2 +1,2 @@
 /* eslint-disable import/prefer-default-export */
-export const getFilter = state => state.filter;
+export const getFilter = state => state.events.filter;

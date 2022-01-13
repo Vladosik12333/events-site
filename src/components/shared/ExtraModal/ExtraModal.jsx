@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import propTypes from "prop-types";
-import { useHistory } from "react-router-dom";
+import moment from "moment";
 import Modal from "../Modal";
 import "./ExtraModal.scss";
 
 export default function ExtraModal({ actionEvent, infoForEvent, onSubmit }) {
-  const history = useHistory();
-
   const [title, setTitle] = useState(infoForEvent?.title ?? "");
   const [place, setPlace] = useState(infoForEvent?.place ?? "");
   const [author, setAuthor] = useState(infoForEvent?.author ?? "");
   const [about, setAbout] = useState(infoForEvent?.about ?? "");
   const [photo, setPhoto] = useState(infoForEvent?.photo ?? "");
-  const [date, setDate] = useState(infoForEvent?.date ?? "");
+  const [date, setDate] = useState(
+    infoForEvent?.date ?? false
+      ? moment(infoForEvent?.date).format("YYYY-MM-DDTHH:mm")
+      : "",
+  );
 
   const onChangeInput = ({ target }) => {
     const { value, name } = target;
@@ -46,26 +48,20 @@ export default function ExtraModal({ actionEvent, infoForEvent, onSubmit }) {
   const preSubmit = evt => {
     evt.preventDefault();
 
+    if (moment(date).fromNow().includes("ago"))
+      return alert("The event cannot be in the past tense.");
+
     if (
       title.trim() === "" ||
       place.trim() === "" ||
       author.trim() === "" ||
       about.trim() === "" ||
-      photo.trim() === "" ||
       date.trim() === ""
     )
       return alert("Ohhh... You have some empty label.");
 
     onSubmit({ title, place, author, about, photo, date });
 
-    setTitle("");
-    setPlace("");
-    setAuthor("");
-    setAbout("");
-    setPhoto("");
-    setDate("");
-
-    history.push("/cabinet");
     return null;
   };
 

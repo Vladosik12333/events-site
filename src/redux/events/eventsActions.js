@@ -1,5 +1,5 @@
-import { createAction } from '@reduxjs/toolkit';
+import { createAction } from "@reduxjs/toolkit";
 
-const filter = createAction('events/filter');
+const filter = createAction("events/filter");
 
 export default { filter };

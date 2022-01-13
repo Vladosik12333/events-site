@@ -1,18 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import events from "./events";
 import { users } from "./users";
-import { usersAPI } from "./services";
-
-const { API } = usersAPI;
+import { usersAPI, eventsAPI } from "./services";
 
 export default configureStore({
   reducer: {
     events,
     users,
-    [API.reducerPath]: API.reducer,
+    [usersAPI.API.reducerPath]: usersAPI.API.reducer,
+    [eventsAPI.API.reducerPath]: eventsAPI.API.reducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware(),
-    API.middleware,
+    usersAPI.API.middleware,
+    eventsAPI.API.middleware,
   ],
 });

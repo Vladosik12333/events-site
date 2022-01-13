@@ -1,7 +1,7 @@
-import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import CabinetView from './views/CabinetView';
-import HomeView from './views/HomeView';
+import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import CabinetView from "./views/CabinetView";
+import HomeView from "./views/HomeView";
 
 export default function App() {
   return (

@@ -1,7 +1,7 @@
-import React from 'react';
-import { AiFillHeart } from 'react-icons/ai';
-import Template from '../../Template';
-import './Footer.scss';
+import React from "react";
+import { AiFillHeart } from "react-icons/ai";
+import Template from "../../Template";
+import "./Footer.scss";
 
 export default function Footer() {
   return (

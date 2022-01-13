@@ -1,6 +1,20 @@
+.yourEvents {
+  text-align: center;
+  margin: 70px 0 50px 0;
+
+  & h2 {
+    font-size: 22px;
+    font-weight: inherit;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 30px;
+    }
+  }
+}
+
 .eventsCabinet {
-  margin: 50px 0;
   display: flex;
+  margin-top: 50px;
   justify-content: center;
   flex-wrap: wrap;
   gap: 40px;

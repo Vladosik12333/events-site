@@ -1,1 +1,1 @@
-export { default } from './CabinetView';
+export { default } from "./CabinetView";

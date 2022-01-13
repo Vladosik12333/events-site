@@ -56,16 +56,19 @@
   flex-direction: column;
   margin-top: -5px;
 
-  & button {
+  & a {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: 1px solid $accentColor;
     margin-top: 5px;
-    cursor: inherit;
+    background-color: $mainColor;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     & svg {
+      fill: $mainColorDark;
       width: 20px;
       height: 20px;
     }

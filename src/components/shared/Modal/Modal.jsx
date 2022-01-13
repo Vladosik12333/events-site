@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import React, { useEffect } from "react";
 import "./Modal.scss";
 import { useHistory, Link } from "react-router-dom";
-import propTypes, { array, object } from "prop-types";
+import propTypes, { array, node, object } from "prop-types";
 import { AiOutlineClose } from "react-icons/ai";
 
 export default function Modal({ children, urlHandleClose }) {
@@ -40,6 +40,6 @@ export default function Modal({ children, urlHandleClose }) {
 }
 
 Modal.propTypes = {
-  children: propTypes.oneOfType([array, object]).isRequired,
+  children: propTypes.oneOfType([array, object, node]).isRequired,
   urlHandleClose: propTypes.string.isRequired,
 };

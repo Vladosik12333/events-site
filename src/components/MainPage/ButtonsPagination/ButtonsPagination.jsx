@@ -1,8 +1,8 @@
-import React from 'react';
-import Pagination from 'react-pagination-library';
-import './ButtonsPagination.scss';
-import 'react-pagination-library/build/css/index.css';
-import propTypes from 'prop-types';
+import React from "react";
+import Pagination from "react-pagination-library";
+import "./ButtonsPagination.scss";
+import "react-pagination-library/build/css/index.css";
+import propTypes from "prop-types";
 
 export default function ButtonsPagination({
   currentPage,

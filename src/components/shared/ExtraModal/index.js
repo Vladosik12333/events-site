@@ -1,1 +1,1 @@
-export { default } from './ExtraModal';
+export { default } from "./ExtraModal";

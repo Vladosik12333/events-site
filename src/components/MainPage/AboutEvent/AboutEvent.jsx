@@ -1,10 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./AboutEvent.scss";
+import { useParams } from "react-router-dom";
+import moment from "moment";
 import Modal from "../../shared/Modal";
 import mockup from "../../../mockup-photo.jpg";
+import { eventsAPI } from "../../../redux/services";
 
 export default function AboutEvent() {
   const [email, setEmail] = useState("");
+  const { id } = useParams();
+  const { data, isError, error, isLoading } =
+    eventsAPI.useGetEventByIdQuery(id);
+  const [
+    counter,
+    {
+      isError: isErrorCounter,
+      isSuccess: isSuccessCounter,
+      error: errorCounter,
+    },
+  ] = eventsAPI.useCounterMutation();
+
+  useEffect(() => {
+    if (isSuccessCounter) alert("You are registered for the event.");
+
+    if (isErrorCounter)
+      alert(`Oooops... We have unknwon error: ${errorCounter.message}`);
+  }, [isSuccessCounter, isErrorCounter]);
 
   const changeInput = ({ target }) => {
     setEmail(target.value);
@@ -15,69 +36,76 @@ export default function AboutEvent() {
 
     if (email.trim() === "") return alert("Ohhh... You have some empty label.");
 
-    console.log(email);
-
+    counter(id);
     setEmail("");
 
     return null;
   };
 
+  if (isError) {
+    return alert(`Oooops... We have unknwon error: ${error.message}`);
+  }
+
   return (
     <Modal urlHandleClose="/events">
-      <div className="aboutEvent">
-        <div className="aboutEventImage">
-          <img src={mockup} alt="" />
-        </div>
-        <div className="aboutEventContent">
-          <h2>title of event</h2>
-          <ul className="aboutEventInfoList">
-            <li>
-              <span className="modal-grey-text">Place</span>
-              <p className="information__place">online or place</p>
-            </li>
-            <li>
-              <span className="modal-grey-text">Date</span>
-              <p className="information__date">01.01.2022</p>
-            </li>
-            <li>
-              <span className="modal-grey-text">Time</span>
-              <p className="information__time">19:00</p>
-            </li>
-            <li>
-              <span className="modal-grey-text">Author</span>
-              <p className="information__author">VLAD</p>
-            </li>
-          </ul>
-          <div className="aboutEventDetails">
-            <h3>about the event</h3>
-            <p>
-              Four of the West’s most infamous outlaws assemble to steal a huge
-              stash of gold from the most corrupt settlement of the gold rush
-              towns. But not all goes to plan one is killed and the other three
-              escapes with bags of gold hide out in the abandoned gold mine
-              where they happen across another gang of three – who themselves
-              were planning to hit the very same bank! As tensions rise, things
-              go from bad to worse as they realise the bags of gold are filled
-              with lead... they’ve been double crossed – but by who and how?
-            </p>
+      {!isLoading ? (
+        <div className="aboutEvent">
+          <div className="aboutEventImage">
+            <img
+              src={data.photo === "" ? mockup : data.photo}
+              alt={data.title}
+            />
           </div>
-          <div className="aboutEventButtons">
-            <form onSubmit={preSubmit}>
-              <input
-                type="text"
-                name="email"
-                value={email}
-                onChange={changeInput}
-                placeholder="YOUR EMAIL"
-              />
-              <button type="submit">i want go to event</button>
-            </form>
-            <div>
-              <p>133 people signed up for the event</p>
+          <div className="aboutEventContent">
+            <h2>{data.title}</h2>
+            <ul className="aboutEventInfoList">
+              <li>
+                <span className="modal-grey-text">Place</span>
+                <p className="information__place">{data.place}</p>
+              </li>
+              <li>
+                <span className="modal-grey-text">Date</span>
+                <p className="information__date">
+                  {moment(data.date).format("DD.MM.YYYY")}
+                </p>
+              </li>
+              <li>
+                <span className="modal-grey-text">Time</span>
+                <p className="information__time">
+                  {moment(data.date).format("HH:mm")}
+                </p>
+              </li>
+              <li>
+                <span className="modal-grey-text">Author</span>
+                <p className="information__author">{data.author}</p>
+              </li>
+            </ul>
+            <div className="aboutEventDetails">
+              <h3>about the event</h3>
+              <p>{data.about}</p>
+            </div>
+            <div className="aboutEventButtons">
+              <form onSubmit={preSubmit}>
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={changeInput}
+                  placeholder="YOUR EMAIL"
+                />
+                <button type="submit" disabled={isSuccessCounter}>
+                  i want go to event
+                </button>
+              </form>
+              <div>
+                <p>{`${data.member} people signed up for the event`}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <h1>Loading...</h1>
+      )}
     </Modal>
   );
 }

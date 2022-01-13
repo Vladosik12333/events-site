@@ -1,4 +1,4 @@
-@import '../../../styles/vars';
+@import "../../../styles/vars";
 
 .aboutEvent {
   overflow-y: scroll;
@@ -62,7 +62,7 @@
       color: #8c8c8c;
 
       &::after {
-        content: '/';
+        content: "/";
         margin: 0 10px;
       }
     }
@@ -158,10 +158,10 @@
     border-radius: 5px;
     font-size: 12px;
     height: 36px;
-    width: 210px;
+    max-width: 250px;
     margin: 0 auto;
     display: flex;
-    text-align: center;
+    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
 

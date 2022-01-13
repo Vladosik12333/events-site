@@ -15,12 +15,12 @@ export default function CardEvent({ id, title, place, photo, extraButtons }) {
       <li className="itemEvent">
         <ul>
           <li className="itemIconsEvent">
-            <button type="button">
+            <Link to={`${url}/deleteEvent/${id}`}>
               <AiFillDelete />
-            </button>
-            <button type="button">
+            </Link>
+            <Link to={`${url}/editEvent/${id}`}>
               <AiFillEdit />
-            </button>
+            </Link>
           </li>
           <li className="containerPhoto">
             <img src={currentPhoto} alt={title} />

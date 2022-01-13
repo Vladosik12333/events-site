@@ -1,1 +1,1 @@
-export { default } from './DeleteEvent';
+export { default } from "./DeleteEvent";

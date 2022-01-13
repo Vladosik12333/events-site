@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import { AiOutlineSearch } from 'react-icons/ai';
-import { useDispatch } from 'react-redux';
-import './FormHeader.scss';
-import { actions } from '../../../../redux/events';
+import React, { useState } from "react";
+import { AiOutlineSearch } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import "./FormHeader.scss";
+import { actions } from "../../../../redux/events";
 
 export default function FormHeader() {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const dispatch = useDispatch();
 
   const onSubmit = event => {
     event.preventDefault();
 
     dispatch(actions.filter(value));
-    setValue('');
   };
 
   return (
