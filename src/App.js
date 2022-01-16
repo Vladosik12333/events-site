@@ -1,20 +1,23 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import CabinetView from "./views/CabinetView";
-import HomeView from "./views/HomeView";
+
+const HomeView = lazy(() => import("./views/HomeView"));
+const CabinetView = lazy(() => import("./views/CabinetView"));
 
 export default function App() {
   return (
     <>
-      <Switch>
-        <Route path="/events">
-          <HomeView />
-        </Route>
-        <Route path="/cabinet">
-          <CabinetView />
-        </Route>
-        <Redirect to="/events" />
-      </Switch>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Switch>
+          <Route path="/events">
+            <HomeView />
+          </Route>
+          <Route path="/cabinet">
+            <CabinetView />
+          </Route>
+          <Redirect to="/events" />
+        </Switch>
+      </Suspense>
     </>
   );
 }

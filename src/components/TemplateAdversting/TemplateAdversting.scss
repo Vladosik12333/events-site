@@ -1,0 +1,17 @@
+@import "../../styles/vars";
+
+.containerAdversting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 280px;
+  background-color: $mainColor;
+
+  & .adversting {
+    text-align: center;
+    color: $mainColorDark;
+    width: 150px;
+    font-weight: 400;
+  }
+}

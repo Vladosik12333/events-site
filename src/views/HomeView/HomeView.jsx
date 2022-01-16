@@ -1,10 +1,13 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Switch, Route, useRouteMatch, Redirect } from "react-router-dom";
 import MainSection from "../../components/mainPage/MainSection";
 import Header from "../../components/shared/Header";
 import Footer from "../../components/shared/Footer";
-import AboutEvent from "../../components/mainPage/AboutEvent";
-import Authorization from "../../components/mainPage/Authorization/Authorization";
+
+const AboutEvent = lazy(() => import("../../components/mainPage/AboutEvent"));
+const Authorization = lazy(() =>
+  import("../../components/mainPage/Authorization/Authorization"),
+);
 
 export default function HomeView() {
   const { url } = useRouteMatch();
@@ -15,15 +18,17 @@ export default function HomeView() {
       <MainSection />
       <Footer />
 
-      <Switch>
-        <Route path={`${url}/aboutEvent/:id`}>
-          <AboutEvent />
-        </Route>
-        <Route path={`${url}/authorization`}>
-          <Authorization />
-        </Route>
-        <Redirect to="/events" />
-      </Switch>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Switch>
+          <Route path={`${url}/aboutEvent/:id`}>
+            <AboutEvent />
+          </Route>
+          <Route path={`${url}/authorization`}>
+            <Authorization />
+          </Route>
+          <Redirect to="/events" />
+        </Switch>
+      </Suspense>
     </>
   );
 }

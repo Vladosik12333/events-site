@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./EventsSection.scss";
 import { useSelector } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
 import Template from "../../../Template";
 import CardEvent from "../../../shared/CardEvent";
 import { eventsAPI } from "../../../../redux/services";
@@ -37,10 +38,11 @@ export default function EventsSection() {
     setCurrentEvents(data.slice(0, actualLastItem));
   }, [currentPage, data]);
 
-  if (isError) return alert(`Ooops... We have unknwon error: ${error.message}`);
+  if (isError)
+    return toast.error(`Ooops... We have unknwon error: ${error.message}.`);
 
   return (
-    <section>
+    <section className="sectionEventsCabinet">
       <Template>
         {!isLoading ? (
           <div className="yourEvents">
@@ -68,6 +70,7 @@ export default function EventsSection() {
           <h1>Loading...</h1>
         )}
       </Template>
+      <Toaster position="bottom-right" />
     </section>
   );
 }

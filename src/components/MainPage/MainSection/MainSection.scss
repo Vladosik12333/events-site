@@ -1,4 +1,13 @@
-@import '../../../styles/vars';
+@import "../../../styles/vars";
+
+.sectionEventsHome {
+  min-height: calc(100vh - 335px);
+  position: relative;
+
+  @media screen and (min-width: 1024px) {
+    min-height: calc(100vh - 280px);
+  }
+}
 
 .eventsHome {
   margin: 50px 0 0 0;

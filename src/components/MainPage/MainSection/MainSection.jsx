@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
 import { selectors } from "../../../redux/events";
 import Template from "../../Template";
 import "./MainSection.scss";
 import CardEvent from "../../shared/CardEvent/CardEvent";
 import ButtonsPagination from "../ButtonsPagination";
 import { eventsAPI } from "../../../redux/services";
+import Anhcor from "../../shared/Anchor";
 
 export default function MainSection() {
   const filter = useSelector(state => selectors.getFilter(state));
@@ -38,20 +40,21 @@ export default function MainSection() {
 
     setTotalPage(Math.ceil(filteredData.length / 15));
     setCurrentEvents(filteredData.slice(actualFirstItem, actualLastItem));
+    if (filteredData.length === 0) toast.error("There are no such events.");
   }, [currentPage, isSuccess, data, filter]);
 
   if (isError) {
-    alert(`Oooops... We have unknown error: ${error.message}`);
+    toast.error(`Oooops... We have unknown error: ${error.message}.`);
   }
 
   return (
     <main>
-      <section>
+      <section className="sectionEventsHome">
         <Template>
           {!isLoading ? (
             <>
               <ul className="eventsHome">
-                {currentEvents.map(({ id, title, place, photo }) => {
+                {currentEvents.map(({ id, title, place, photo }, index) => {
                   return (
                     <CardEvent
                       key={id}
@@ -59,6 +62,7 @@ export default function MainSection() {
                       place={place}
                       photo={photo}
                       id={id}
+                      index={index}
                       extraButtons={false}
                     />
                   );
@@ -75,6 +79,8 @@ export default function MainSection() {
           )}
         </Template>
       </section>
+      <Toaster position="bottom-right" />
+      <Anhcor />
     </main>
   );
 }

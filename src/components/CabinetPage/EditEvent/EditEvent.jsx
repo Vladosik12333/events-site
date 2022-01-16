@@ -1,6 +1,7 @@
 import "./EditEvent.scss";
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 import ExtraModal from "../../shared/ExtraModal";
 import { eventsAPI } from "../../../redux/services";
 import Modal from "../../shared/Modal";
@@ -20,41 +21,41 @@ export default function CreateEvent() {
   useEffect(() => {
     if (isSuccess) {
       if (data.message === "Event Updated") {
-        alert("Event changed");
+        toast.success("Event changed.");
         history.push("/cabinet");
         return null;
       }
 
       if (data.message === "Data too long for column 'title' at row 1") {
-        alert("The title must be up to 27 characters long.");
+        toast.error("The title must be up to 27 characters long.");
         return null;
       }
 
       if (data.message === "Data too long for column 'place' at row 1") {
-        alert("The place must be up to 35 characters long.");
+        toast.error("The place must be up to 35 characters long.");
         return null;
       }
 
       if (data.message === "Data too long for column 'author' at row 1") {
-        alert("The author must be up to 30 characters long.");
+        toast.error("The author must be up to 30 characters long.");
         return null;
       }
 
       if (data.message === "Data too long for column 'about' at row 1") {
-        alert("The about must be up to 500 characters long.");
+        toast.error("The about must be up to 500 characters long.");
         return null;
       }
 
       if (data.message === "Data too long for column 'photo' at row 1") {
-        alert("The photo must be up to 200 characters long.");
+        toast.error("The photo must be up to 200 characters long.");
         return null;
       }
 
-      alert("null");
       return null;
     }
+
     if (isError)
-      return alert(`Ooops... We have unkwon error: ${error.message}`);
+      return toast.error(`Ooops... We have unkwon error: ${error.message}.`);
 
     return null;
   }, [isError, isSuccess]);
@@ -63,7 +64,8 @@ export default function CreateEvent() {
     changeEvent({ ...info, id });
   };
 
-  if (isErrorGet) alert(`Ooops... We have unknwon error: ${errorGet.message}`);
+  if (isErrorGet)
+    toast.error(`Ooops... We have unknwon error: ${errorGet.message}.`);
 
   return (
     <>
@@ -85,6 +87,7 @@ export default function CreateEvent() {
           }}
         />
       )}
+      <Toaster position="bottom-right" />
     </>
   );
 }

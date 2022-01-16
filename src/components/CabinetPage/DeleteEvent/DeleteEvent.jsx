@@ -1,6 +1,7 @@
 import "./DeleteEvent.scss";
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 import Modal from "../../shared/Modal";
 import { eventsAPI } from "../../../redux/services";
 
@@ -13,13 +14,13 @@ export default function DeleteEvent() {
 
   useEffect(() => {
     if (isSuccess) {
-      alert("Event deleted");
+      toast.success("Event deleted.");
       history.push("/cabinet");
       return null;
     }
 
     if (isError) {
-      alert(`Ooops... We have unknwon error: ${error.message}`);
+      toast.error(`Ooops... We have unknwon error: ${error.message}.`);
     }
 
     return null;
@@ -34,22 +35,29 @@ export default function DeleteEvent() {
   };
 
   return (
-    <Modal actionEvent stylesAbsoluteModal={false} urlHandleClose="/cabinet">
-      <div className="deleteEvent">
-        <p>Are you sure you want to delete the event ?</p>
-        <div className="buttons">
-          <button
-            onClick={onDeleteEvent}
-            type="button"
-            className="buttonAccept"
-          >
-            Yes
-          </button>
-          <button onClick={onCloseModal} type="button" className="buttonCancel">
-            No
-          </button>
+    <>
+      <Modal actionEvent stylesAbsoluteModal={false} urlHandleClose="/cabinet">
+        <div className="deleteEvent">
+          <p>Are you sure you want to delete the event ?</p>
+          <div className="buttons">
+            <button
+              onClick={onDeleteEvent}
+              type="button"
+              className="buttonAccept"
+            >
+              Yes
+            </button>
+            <button
+              onClick={onCloseModal}
+              type="button"
+              className="buttonCancel"
+            >
+              No
+            </button>
+          </div>
         </div>
-      </div>
-    </Modal>
+      </Modal>
+      <Toaster position="bottom-right" />
+    </>
   );
 }

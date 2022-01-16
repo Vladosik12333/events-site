@@ -1,0 +1,43 @@
+@import "../../../styles/vars";
+
+.anhcor {
+  position: fixed;
+  bottom: 20px;
+  right: 5px;
+  display: block;
+  z-index: 100;
+  cursor: pointer;
+  border: 2px solid $accentColor;
+  animation: anhcor 1000ms $animationFunction;
+
+  & svg {
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    fill: $accentColor;
+  }
+
+  @media screen and (min-width: 1024px) {
+    right: 40px;
+    bottom: 20px;
+
+    & svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
+@keyframes anhcor {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
