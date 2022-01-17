@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouteMatch } from "react-router-dom";
 import { selectors } from "../../../redux/events";
 import Template from "../../Template";
 import "./MainSection.scss";
@@ -10,6 +11,7 @@ import { eventsAPI } from "../../../redux/services";
 import Anhcor from "../../shared/Anchor";
 
 export default function MainSection() {
+  const { isExact } = useRouteMatch();
   const filter = useSelector(state => selectors.getFilter(state));
   const [currentPage, setCurrentPage] = useState(1);
   const [currentEvents, setCurrentEvents] = useState([]);
@@ -80,7 +82,7 @@ export default function MainSection() {
         </Template>
       </section>
       <Toaster position="bottom-right" />
-      <Anhcor />
+      {isExact && <Anhcor />}
     </main>
   );
 }

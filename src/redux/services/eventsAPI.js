@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const API = createApi({
   reducerPath: "eventsAPI",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000",
+    baseUrl: "https://rocky-gorge-32743.herokuapp.com",
   }),
   endpoints: builder => ({
     getEvents: builder.query({

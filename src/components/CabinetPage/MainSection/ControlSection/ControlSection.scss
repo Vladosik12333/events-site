@@ -78,13 +78,16 @@
   }
 
   & .containerInfo {
-    margin-top: 20px;
+    margin: 20px auto 0 auto;
+    width: 170px;
+
     & p {
       text-align: center;
       font-family: inherit;
       font-weight: inherit;
       font-size: 12px;
       color: $mainColorDark;
+      display: inline-block;
 
       @media screen and (min-width: 1024px) {
         font-size: 14px;
