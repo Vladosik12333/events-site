@@ -67,7 +67,7 @@ export default function EventsSection() {
             </ul>
           </div>
         ) : (
-          <h1>Loading...</h1>
+          <h1 style={{ marginTop: "70px" }}>Loading...</h1>
         )}
       </Template>
       <Toaster position="bottom-right" />
